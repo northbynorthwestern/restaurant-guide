@@ -1,3 +1,4 @@
-RestaurantName,XCoord,YCoord,SundayOpen,SundayClose,MondayOpen,MondayClose,TuesdayOpen,TuesdayClose,WednesdayOpen,WednesdayClose,ThursdayOpen,ThursdayClose,FridayOpen,FridayClose,SaturdayOpen,SaturdayClose
+Restaurant Name,XCoord,YCoord,SundayOpen,SundayClose,MondayOpen,MondayClose,TuesdayOpen,TuesdayClose,WednesdayOpen,WednesdayClose,ThursdayOpen,ThursdayClose,FridayOpen,FridayClose,SaturdayOpen,SaturdayClose
 10Q Chicken,42.04822,-87.68288,11,22,11,22,11,22,11,22,11,22,11,22,11,22
 Frida's Breakfast and Lunch,42.04789,-87.68019,8,15,8,15,8,20,8,20,8,20,8,20,8,15
+Evanston Chicken Shack,42.05279,-87.68729,11.3,20,10,23.59,10,23.59,10,12.3,10,12.3,10,12.3,10,12.3
