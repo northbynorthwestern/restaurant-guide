@@ -1,0 +1,3 @@
+RestaurantName,XCoord,YCoord,SundayOpen,SundayClose,MondayOpen,MondayClose,TuesdayOpen,TuesdayClose,WednesdayOpen,WednesdayClose,ThursdayOpen,ThursdayClose,FridayOpen,FridayClose,SaturdayOpen,SaturdayClose
+10Q Chicken,42.04822,-87.68288,11,22,11,22,11,22,11,22,11,22,11,22,11,22
+Frida's Breakfast and Lunch,42.04789,-87.68019,8,15,8,15,8,20,8,20,8,20,8,20,8,15
