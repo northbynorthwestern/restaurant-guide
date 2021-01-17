@@ -33,8 +33,17 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             text-align: center;
         }
+        .clock{
+            width: 60%;
+            margin: auto;
+        }
+        .clock-flavor{
+            margin-bottom: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 400;
+        }
         #clockText{
-            text-align: center;
+            margin-top: 0;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
     </style>
@@ -64,8 +73,10 @@
     </form>
     <button id="submitForm">Submit</button>
 </div>
+<div class="clock">
+<h3 class="clock-flavor">What's open at:</h3>
     <h2 id="clockText">12:00 a.m.</h2>
-
+</div>
     <div id="map-one"></div>
 </body>
 <script src="main.js"></script>
