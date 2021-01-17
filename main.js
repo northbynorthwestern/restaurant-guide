@@ -12,7 +12,7 @@ let rowConverter = function(d){
         availability: [[parseFloat(d.SundayOpen), parseFloat(d.SundayClose)], [parseFloat(d.MondayOpen), parseFloat(d.MondayClose)], [parseFloat(d.TuesdayOpen), parseFloat(d.TuesdayClose)], [parseFloat(d.WednesdayOpen), parseFloat(d.WednesdayClose)], [parseFloat(d.ThursdayOpen), parseFloat(d.ThursdayClose)], [parseFloat(d.FridayOpen), parseFloat(d.FridayClose)], [parseFloat(d.SaturdayOpen), parseFloat(d.SaturdayClose)]]
     }
 }
-d3.csv("https://raw.githubusercontent.com/northbynorthwestern/restaurant-guide/main/RestaurantTimes.csv?token=AB2XCNCLTIXQBEXTBKFKI3TABT5D4", rowConverter).then(function(data){
+d3.csv("https://northbynorthwestern.github.io/restaurant-guide/RestaurantTimes.csv", rowConverter).then(function(data){
     restaurantList = data;
     console.log(hour)
     setMap(parseFloat(hour.toString() + "." + minute.toString()), day)
