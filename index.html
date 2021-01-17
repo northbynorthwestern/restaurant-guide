@@ -12,9 +12,28 @@
     crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.3.1/d3.min.js" integrity="sha512-9H86d5lhAwgf2/u29K4N5G6pZThNOojI8kMT4nT4NHvVR02cM85M06KJRQXkI0XgQWBpzQyIyr8LVomyu1AQdw==" crossorigin="anonymous"></script>
     <style>
+        .top-content{
+            width: 20vw;
+            position: absolute;
+            border-right: 2px solid navy;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background-color: white;
+            padding: 2em;
+            /* border-radius: 10px; */
+            /* box-shadow: 1px 2px 2px black; */
+            z-index: 10;
+        }
         #map-one{
-            height: 50vh;
-            width: 60%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 0;
+            height: 100%;
+            /* width: 100%; */
             margin: auto;
             border: 1px solid black;
             border-radius: 5px;
@@ -22,19 +41,24 @@
         }
         .article-hed{
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            text-align: center
+            text-align: center;
         }
         #time-input{
             margin-bottom: 1em;
+            display: flex;
+            height: 2em;
+            width: 100%;
+            justify-content: space-evenly;
         }
         .input-container{
             width: 50%;
             margin: auto;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             text-align: center;
+           
         }
         .clock{
-            width: 60%;
+            width: 100%;
             margin: auto;
         }
         .clock-flavor{
@@ -46,16 +70,72 @@
             margin-top: 0;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
+        #period, #minuteInput{
+            margin-right: .5em;
+        }
+        #submitForm{
+            padding: .5em 1em;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            transition: all .2s linear;
+            box-shadow: 0 3px rgb(68, 68, 68)
+        }
+        #submitForm:hover{
+            /* color: white; */
+            background-color: darkgrey;
+        }
+        #submitForm:active{
+            box-shadow: 0 1px #666;
+  transform: translateY(2px)
+        }
+    #error-alert{
+        font-size: .75em;
+        color: red;
+        user-select: none;
+    }
+    .hidden{
+        opacity: 0;
+    }
+    #restaurant-list{
+        list-style: none;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        padding-inline-start: 0;
+    }
+    #restaurant-list li{
+        padding: 1em 0;
+        border-bottom: 1px solid darkgrey;
+        user-select: none;
+        transition: color .2s linear;
+        cursor: pointer;
+    }
+    #restaurant-list li:hover{
+        color: blue;
+    }
     </style>
 </head>
 <body>
+    <section class="top-content">
     <h1 class="article-hed">When2Eat</h1>
     <div class="input-container">
+    <p id="error-alert" class="hidden">Please enter a valid minute (0-59)</p>
     <form id="time-input">
-        <label for="hour">Hour (1-12)</label>
-        <input type="number" id="hourInput" name="hour" min="1" max="12">
-        <label for="minute">Minute (0 - 59)</label>
-        <input type="number" id="minuteInput" name="minute" min="0" max="60">
+        <select name="hour" id="hourInput">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <label for="minute">:</label>
+        <input type="number" id="minuteInput" name="minute" min="0" max="59">
         <select name="period" id="period">
             <option value="AM">a.m.</option>
             <option value="PM">p.m.</option>
@@ -77,6 +157,9 @@
 <h3 class="clock-flavor">What's open at:</h3>
     <h2 id="clockText">12:00 a.m.</h2>
 </div>
+<ol id="restaurant-list">
+</ol>
+</section>
     <div id="map-one"></div>
 </body>
 <script src="main.js"></script>

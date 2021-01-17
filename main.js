@@ -1,4 +1,4 @@
-var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.055984, -87.675171], 14);
+var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.055984, -87.675171], 15);
 // mymap.setMaxBounds(mymap.getBounds());
 L.tileLayer('https://api.mapbox.com/styles/v1/dmdeloso/ckk0gkv9q1hoe17qrngmljsau/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZG1kZWxvc28iLCJhIjoiY2trMGZ6aXJhMDVqdDJvbnI4YzM5MHRraiJ9.nOwnc18LqvUNErSlg4N0AA').addTo(mymap);
 var layerGroup = L.layerGroup().addTo(mymap);
@@ -46,15 +46,30 @@ let dateToString = (inputHour, inputMinute, inputWeekday) => {
 }
 let setMap = (timeDecimal, selectDay) => {
     layerGroup.clearLayers();
+    document.getElementById("restaurant-list").innerHTML = ""
     for(let restaurant of restaurantList){
         let timeRange = restaurant.availability[selectDay];
         if(timeDecimal >= timeRange[0] && timeDecimal <= timeRange[1]){
             let marker = L.marker([restaurant.XCoord, restaurant.YCoord]).addTo(layerGroup);
             marker.bindPopup(restaurant.name)
+            let newListItem = document.createElement("li");
+            newListItem.innerHTML = restaurant.name;
+            newListItem.onmouseover = function(){
+                console.log(restaurant.name)
+                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16)
+            }
+            newListItem.onmouseleave = function(){
+                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 15, {
+                    animate: true,
+                    duration: 1.5
+                })
+            }
+            document.getElementById("restaurant-list").append(newListItem)
         }
     }
 }
 let getInputTime = () => {
+    d3.select("#error-alert").classed("hidden", true)
     
     let setHour;
     let hourInput = parseInt(document.getElementById("hourInput").value);
@@ -65,8 +80,12 @@ let getInputTime = () => {
     console.log(period) 
     let weekdayInput = parseInt(document.getElementById("weekday").value)
     console.log(weekdayInput)
-    if(hourInput < 1 || hourInput > 12 || minuteInput < 0 || minuteInput > 59){
-        alert("Please enter a valid number");
+    if(isNaN(minuteInput)){
+        d3.select("#error-alert").classed("hidden", false)
+        return;
+    }
+    else if(minuteInput < 0 || minuteInput > 59){
+        d3.select("#error-alert").classed("hidden", false)
         return;
     }
     else if(hourInput == 12 && period == "AM"){
