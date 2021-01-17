@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapz</title>
+    <title>When2Eat in Evanston</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -43,6 +43,12 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             text-align: center;
         }
+        .article-dek, .article-disclaimer{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .article-disclaimer{
+            font-style: italic;
+        }
         #time-input{
             margin-bottom: 1em;
             display: flex;
@@ -51,11 +57,21 @@
             justify-content: space-evenly;
         }
         .input-container{
-            width: 50%;
+            background-color: lightgreen;
+            box-shadow: 1px 1px 2px;
+            border-radius: 10px;
+            width: 90%;
+            padding: 1em;
             margin: auto;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             text-align: center;
            
+        }
+        select, input{
+            border: 1px solid black;
+            border-radius: 5px;
+            /* box-shadow: 1px 2px 3px; */
+            height: 4em;
         }
         .clock{
             width: 100%;
@@ -86,6 +102,7 @@
             background-color: darkgrey;
         }
         #submitForm:active{
+            color: white;
             box-shadow: 0 1px #666;
   transform: translateY(2px)
         }
@@ -95,7 +112,7 @@
         user-select: none;
     }
     .hidden{
-        opacity: 0;
+        display: none;
     }
     #restaurant-list{
         list-style: none;
@@ -112,14 +129,70 @@
     #restaurant-list li:hover{
         color: blue;
     }
+    .article-hed-mobile{
+        display: none;
+    }
+    .input-plus-label{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    label{
+        font-size: .75em;
+    }
+    @media screen and (max-width: 1024px){
+    .top-content{
+        width: unset;
+        right: 0;
+        bottom: 0;
+        top: unset;
+        height: 50%;
+        border-right: unset;
+        border-top: 2px solid navy;
+        overflow-y: scroll;
+        padding: 0 1em;
+        /* box-shadow: 0 -2px 2px black; */
+    }     
+    .article-hed{
+        display: none;
+    }
+    #map-one{
+        top: 12%;
+bottom: 50%;
+height: 40%;
+    }   
+    .article-hed-mobile{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: white;
+        text-align: center;
+        height: 5%;
+        padding-bottom: 5%;
+        z-index: 10;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .input-container{
+        margin-top: 1em;
+    }
+    }
     </style>
 </head>
 <body>
+    <h1 class="article-hed-mobile">When2Eat in Evanston</h1>    
+    <div id="map-one"></div>
     <section class="top-content">
-    <h1 class="article-hed">When2Eat</h1>
+    <h1 class="article-hed">When2Eat in Evanston</h1>
+    <p class="article-dek">Whether you're looking for a late-night bite or a new brunch spot, enter a time and a day of the week and we'll let you know which Evanston restaurants are open!</p>
+    <p class="article-disclaimer">Please remember to wear a mask and follow social distancing guidelines – we recommend takeout or delivery!</p>
     <div class="input-container">
     <p id="error-alert" class="hidden">Please enter a valid minute (0-59)</p>
+ 
     <form id="time-input">
+        <div class="input-plus-label">
+            <label for="hour">Hour</label>
         <select name="hour" id="hourInput">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -134,12 +207,21 @@
             <option value="11">11</option>
             <option value="12">12</option>
         </select>
-        <label for="minute">:</label>
+    </div>
+        <p id="time-colon">:</p>
+        <div class="input-plus-label">
+        <label for="minute">Minute</label>
         <input type="number" id="minuteInput" name="minute" min="0" max="59">
+    </div>
+    <div class="input-plus-label">
+        <label for="period"><br></label>
         <select name="period" id="period">
             <option value="AM">a.m.</option>
             <option value="PM">p.m.</option>
         </select>
+    </div>
+    <div class="input-plus-label">
+        <label for="weekday">Day</label>
         <select name="weekday" id="weekday">
             <option value="0">Sunday</option>
             <option value="1">Monday</option>
@@ -149,7 +231,7 @@
             <option value="5">Friday</option>
             <option value="6">Saturday</option>
         </select>
-
+    </div>
     </form>
     <button id="submitForm">Submit</button>
 </div>
@@ -160,7 +242,7 @@
 <ol id="restaurant-list">
 </ol>
 </section>
-    <div id="map-one"></div>
+
 </body>
 <script src="main.js"></script>
 </html>
