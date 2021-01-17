@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapz</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.3.1/d3.min.js" integrity="sha512-9H86d5lhAwgf2/u29K4N5G6pZThNOojI8kMT4nT4NHvVR02cM85M06KJRQXkI0XgQWBpzQyIyr8LVomyu1AQdw==" crossorigin="anonymous"></script>
+    <style>
+        #map-one{
+            height: 50vh;
+            width: 60%;
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px black;
+        }
+        .article-hed{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center
+        }
+        #time-input{
+            margin-bottom: 1em;
+        }
+        .input-container{
+            width: 50%;
+            margin: auto;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+        #clockText{
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="article-hed">When2Eat</h1>
+    <div class="input-container">
+    <form id="time-input">
+        <label for="hour">Hour (1-12)</label>
+        <input type="number" id="hourInput" name="hour" min="1" max="12">
+        <label for="minute">Minute (0 - 59)</label>
+        <input type="number" id="minuteInput" name="minute" min="0" max="60">
+        <select name="period" id="period">
+            <option value="AM">a.m.</option>
+            <option value="PM">p.m.</option>
+        </select>
+        <select name="weekday" id="weekday">
+            <option value="0">Sunday</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+        </select>
+
+    </form>
+    <button id="submitForm">Submit</button>
+</div>
+    <h2 id="clockText">12:00 a.m.</h2>
+
+    <div id="map-one"></div>
+</body>
+<script src="main.js"></script>
+</html>
