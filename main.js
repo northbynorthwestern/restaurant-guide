@@ -1,9 +1,12 @@
-var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.055984, -87.675171], 15);
-// mymap.setMaxBounds(mymap.getBounds());
+
+// Create map and set coordinates to Evanston
+var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.045597, -87.688568], 15);
+// Import tileset
 L.tileLayer('https://api.mapbox.com/styles/v1/dmdeloso/ckk0gkv9q1hoe17qrngmljsau/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZG1kZWxvc28iLCJhIjoiY2trMGZ6aXJhMDVqdDJvbnI4YzM5MHRraiJ9.nOwnc18LqvUNErSlg4N0AA').addTo(mymap);
+// Initialize layer for markers
 var layerGroup = L.layerGroup().addTo(mymap);
 let restaurantList;
-
+// Function to parse csv files
 let rowConverter = function(d){
     return{
         name: d.RestaurantName,
@@ -12,16 +15,21 @@ let rowConverter = function(d){
         availability: [[parseFloat(d.SundayOpen), parseFloat(d.SundayClose)], [parseFloat(d.MondayOpen), parseFloat(d.MondayClose)], [parseFloat(d.TuesdayOpen), parseFloat(d.TuesdayClose)], [parseFloat(d.WednesdayOpen), parseFloat(d.WednesdayClose)], [parseFloat(d.ThursdayOpen), parseFloat(d.ThursdayClose)], [parseFloat(d.FridayOpen), parseFloat(d.FridayClose)], [parseFloat(d.SaturdayOpen), parseFloat(d.SaturdayClose)]]
     }
 }
+// Import csv and map data to restaurant list
 d3.csv("https://northbynorthwestern.github.io/restaurant-guide/RestaurantTimes.csv", rowConverter).then(function(data){
     restaurantList = data;
     console.log(hour)
     setMap(parseFloat(hour.toString() + "." + minute.toString()), day)
 })
+
+// Get current time and day
 let currentTime = new Date();
 let hour = currentTime.getHours();
 let minute = currentTime.getMinutes();
 let day = currentTime.getDay();
 let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+// Convert date to string for display on page
 let dateToString = (inputHour, inputMinute, inputWeekday) => {
     let parsedMinute;
     let parsedWeekday = weekday[inputWeekday]
@@ -44,20 +52,27 @@ let dateToString = (inputHour, inputMinute, inputWeekday) => {
         return((inputHour - 12) + ":" + parsedMinute + " p.m. on a " + parsedWeekday)
     }
 }
+
 let setMap = (timeDecimal, selectDay) => {
+    // Reset map and list on page
     layerGroup.clearLayers();
     document.getElementById("restaurant-list").innerHTML = ""
+
+
     for(let restaurant of restaurantList){
         let timeRange = restaurant.availability[selectDay];
         if(timeDecimal >= timeRange[0] && timeDecimal <= timeRange[1]){
+            // adds marker if selected time falls between a restaurant's open and close times
             let marker = L.marker([restaurant.XCoord, restaurant.YCoord]).addTo(layerGroup);
             marker.bindPopup(restaurant.name)
             let newListItem = document.createElement("li");
             newListItem.innerHTML = restaurant.name;
+            // Scroll to marker when hovering over restaurant name on list
             newListItem.onmouseover = function(){
                 console.log(restaurant.name)
                 mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16)
             }
+            // Reset zoom on mouse exit
             newListItem.onmouseleave = function(){
                 mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 15, {
                     animate: true,
@@ -69,9 +84,12 @@ let setMap = (timeDecimal, selectDay) => {
     }
 }
 let getInputTime = () => {
-    d3.select("#error-alert").classed("hidden", true)
-    
+    // Reset error alert and hide intro text on mobile
+    d3.select("#error-alert").classed("hidden", true);
+    d3.select("#article-dek-mobile").classed("hidden", true);
+    d3.select("#article-disclaimer-mobile").classed("hidden", true)
     let setHour;
+    // Retrieve user input as integers
     let hourInput = parseInt(document.getElementById("hourInput").value);
     console.log(hourInput);
     let minuteInput = parseInt(document.getElementById("minuteInput").value);
@@ -80,11 +98,8 @@ let getInputTime = () => {
     console.log(period) 
     let weekdayInput = parseInt(document.getElementById("weekday").value)
     console.log(weekdayInput)
-    if(isNaN(minuteInput)){
-        d3.select("#error-alert").classed("hidden", false)
-        return;
-    }
-    else if(minuteInput < 0 || minuteInput > 59){
+    if(isNaN(minuteInput) || minuteInput < 0 || minuteInput > 59){
+        // Show error when user does not input a number or inputs a number outside the expected range
         d3.select("#error-alert").classed("hidden", false)
         return;
     }
@@ -102,6 +117,7 @@ let getInputTime = () => {
         setHour = hourInput;
     }
     document.getElementById("clockText").innerHTML = dateToString(setHour, minuteInput, weekdayInput)
+    // Converts time to float where the decimals represent the minutes - e.g. 11:30 p.m. == 23.3, 5:00 a.m. == 5
     let finalTime = [parseFloat(setHour.toString() + "." + minuteInput.toString()), weekdayInput]
     setMap(finalTime[0], finalTime[1])
  
