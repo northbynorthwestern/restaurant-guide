@@ -1,6 +1,6 @@
 
 // Create map and set coordinates to Evanston
-var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.045597, -87.688568], 15);
+var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.045597, -87.688568], 16);
 // Import tileset
 L.tileLayer('https://api.mapbox.com/styles/v1/dmdeloso/ckk0gkv9q1hoe17qrngmljsau/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZG1kZWxvc28iLCJhIjoiY2trMGZ6aXJhMDVqdDJvbnI4YzM5MHRraiJ9.nOwnc18LqvUNErSlg4N0AA').addTo(mymap);
 // Initialize layer for markers
@@ -16,7 +16,7 @@ let rowConverter = function(d){
     }
 }
 // Import csv and map data to restaurant list
-d3.csv("https://northbynorthwestern.github.io/restaurant-guide/RestaurantTimes.csv", rowConverter).then(function(data){
+d3.csv("https://gist.githubusercontent.com/dmdeloso/459e3cfd7e6fbab92194f967417410bb/raw/819d67e02ef3215c1b53984a5c260a11010cc9e3/RestaurantTimes.csv", rowConverter).then(function(data){
     restaurantList = data;
     console.log(hour)
     setMap(parseFloat(hour.toString() + "." + minute.toString()), day)
@@ -70,11 +70,11 @@ let setMap = (timeDecimal, selectDay) => {
             // Scroll to marker when hovering over restaurant name on list
             newListItem.onmouseover = function(){
                 console.log(restaurant.name)
-                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16)
+                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 17)
             }
             // Reset zoom on mouse exit
             newListItem.onmouseleave = function(){
-                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 15, {
+                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16, {
                     animate: true,
                     duration: 1.5
                 })
