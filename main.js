@@ -71,7 +71,7 @@ let setMap = (timeDecimal, selectDay) => {
             marker.bindPopup(`<h3>${restaurant.name}</h3><p>${restaurant.address}</p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`)
             let newListItem = document.createElement("li");
             newListItem.tabIndex = 0;
-            newListItem.innerHTML = `<div class = "restaurant-button"><h3 class=""restaurant-name">${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
+            newListItem.innerHTML = `<div class = "restaurant-button"><h3 class="restaurant-name">${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
             // Scroll to marker when hovering over restaurant name on list
             newListItem.onclick = function(){
                 mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 17)
