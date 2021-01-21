@@ -1,0 +1,237 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+}
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+.top-content{
+    width: 30vw;
+    position: absolute;
+    border-right: 2px solid navy;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    padding: 2em;
+    /* border-radius: 10px; */
+    /* box-shadow: 1px 2px 2px black; */
+    overflow-y: scroll;
+    z-index: 10;
+}
+#map-one{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    height: 100%;
+    /* width: 100%; */
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
+}
+.article-hed{
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0;
+}
+.article-subhed{
+    margin-top: 0;
+    font-weight: 300;
+    text-align: center;
+    font-style: italic;
+}
+.article-disclaimer, #article-disclaimer-mobile{
+    font-style: italic;
+}
+#article-disclaimer-mobile, #article-dek-mobile{
+    display: none;
+}
+#time-input{
+    margin-bottom: 1em;
+    display: flex;
+    height: 2em;
+    width: 100%;
+    justify-content: center;
+}
+.input-container{
+    background-color: lightgreen;
+    box-shadow: 1px 1px 2px;
+    border-radius: 10px;
+    max-width: 50%;
+    padding: 1em;
+    margin: auto;
+    text-align: center;
+   
+}
+select, input{
+    background-color: white;
+    padding: .5em;
+    /* box-shadow: 1px 2px 3px; */
+    /* height: 4em; */
+    border: 1px solid green;
+    border-radius: 4px;
+ box-sizing: border-box;
+}
+#weekday-input{
+    margin-bottom: 1em;
+}
+.clock{
+    width: 100%;
+    margin: auto;
+}
+.clock-flavor{
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: 400;
+}
+#clockText{
+    font-size: 1.5em;
+    margin-top: 0;
+}
+#period, #minuteInput{
+    margin-right: .5em;
+}
+#submitForm{
+    padding: .5em 1em;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    transition: all .2s linear;
+    box-shadow: 0 3px rgb(68, 68, 68)
+}
+#submitForm:hover{
+    /* color: white; */
+    background-color: lightgrey;
+}
+#submitForm:active{
+    background-color: white;
+    color: white;
+    box-shadow: 0 1px #666;
+transform: translateY(2px)
+}
+#error-alert{
+font-size: .75em;
+color: red;
+user-select: none;
+}
+.hidden{
+display: none !important;
+}
+#restaurant-list{
+
+list-style: none;
+padding-inline-start: 0;
+/* overflow-y: scroll; */
+/* max-height: 35%; */
+}
+#restaurant-list li{
+padding: 0;
+border-bottom: 1px solid darkgrey;
+user-select: none;
+
+cursor: pointer;
+
+}
+.restaurant-name{
+margin: 0;
+padding: .5em 0;
+}
+.restaurant-button{
+transition: color .15s linear;
+}
+#restaurant-list li:hover .restaurant-button{
+color: rgb(10, 152, 199);
+}
+.article-hed-mobile{
+display: none;
+}
+.input-plus-label{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+label{
+font-size: .75em;
+}
+.restaurant-button{
+font-size: 1em;
+text-align: center;
+}
+.restaurant-details{
+display: none;
+text-align: center;
+}
+#restaurant-list li:focus{
+outline: none;
+cursor: default;
+}
+#restaurant-list li:focus .restaurant-button{
+color: black;
+}
+#restaurant-list li:focus .restaurant-details, #restaurant-list li:focus-within .restaurant-details{
+display: block ;
+/* color: red */
+}
+.restaurant-website{
+padding-bottom: 1em;
+}
+.leaflet-popup-content h3, .leaflet-popup-content p{
+margin: .5em 0;
+}
+.article-credits{
+font-size: 1em;
+font-weight: 300;
+font-style: italic;
+}
+.article-credits a{
+font-weight: 400;
+color: black;
+}
+@media screen and (max-width: 1024px){
+.article-dek, .article-disclaimer{
+display: none;
+}
+#article-dek-mobile, #article-disclaimer-mobile{
+display: block;
+}
+.top-content{
+width: unset;
+right: 0;
+bottom: 0;
+top: unset;
+height: 50%;
+border-right: unset;
+border-top: 2px solid navy;
+overflow-y: scroll;
+padding: 0 1em;
+/* box-shadow: 0 -2px 2px black; */
+}     
+#map-one{
+top: 0;
+bottom: 50%;
+}   
+
+.input-container{
+margin-top: 1em;
+}
+}
