@@ -68,6 +68,13 @@
         .article-hed{
             margin-top: 0;
             text-align: center;
+            margin-bottom: 0;
+        }
+        .article-subhed{
+            margin-top: 0;
+            font-weight: 300;
+            text-align: center;
+            font-style: italic;
         }
         .article-disclaimer, #article-disclaimer-mobile{
             font-style: italic;
@@ -80,7 +87,7 @@
             display: flex;
             height: 2em;
             width: 100%;
-            justify-content: space-evenly;
+            justify-content: center;
         }
         .input-container{
             background-color: lightgreen;
@@ -110,10 +117,11 @@
         }
         .clock-flavor{
             margin-bottom: 0;
-
+            font-size: 1em;
             font-weight: 400;
         }
         #clockText{
+            font-size: 1.5em;
             margin-top: 0;
         }
         #period, #minuteInput{
@@ -182,7 +190,10 @@
         display: none;
         text-align: center;
     }
-    .selected-restaurant .restaurant-details{
+    #restaurant-list li:focus{
+        outline: none;
+    }
+    #restaurant-list li:focus .restaurant-details{
         display: block ;
         /* color: red */
     }
@@ -218,26 +229,13 @@
         /* box-shadow: 0 -2px 2px black; */
     }     
     .article-hed{
-        display: none;
+        /* display: none; */
     }
     #map-one{
-        top: 12%;
-bottom: 50%;
-height: 40%;
-    }   
-    .article-hed-mobile{
-        display: block;
-        position: absolute;
         top: 0;
-        right: 0;
-        left: 0;
-        background-color: white;
-        text-align: center;
-        height: 5%;
-        padding-bottom: 5%;
-        z-index: 10;
-        font-size: 7vw;
-    }
+bottom: 50%;
+    }   
+
     .input-container{
         margin-top: 1em;
     }
@@ -245,10 +243,11 @@ height: 40%;
     </style>
 </head>
 <body>
-    <h1 class="article-hed-mobile">When2Eat in Evanston</h1>    
+  
     <div id="map-one"></div>
     <section class="top-content">
     <h1 class="article-hed">When2Eat in Evanston</h1>
+    <p class="article-subhed">Last updated Jan. 21, 2021</p>
     <p class="article-dek">Whether you're looking for a late-night bite or a new brunch spot, enter a time and a day of the week and we'll let you know which Evanston restaurants are open!</p>
     <p class="article-disclaimer">Please remember to wear a mask and follow social distancing guidelines – we recommend takeout or delivery!</p>
     <p id="article-dek-mobile">Whether you're looking for a late-night bite or a new brunch spot, enter a time and a day of the week and we'll let you know which Evanston restaurants are open!</p>
@@ -256,7 +255,7 @@ height: 40%;
     <div class="input-container">
     <p id="error-alert" class="hidden">Please enter a valid minute (0-59)</p>
  
-    <form id="time-input">
+    <form id="time-input" onsubmit="event.preventDefault();">
         <div class="input-plus-label">
             <label for="hour">Hour</label>
         <select name="hour" id="hourInput">
@@ -303,8 +302,8 @@ height: 40%;
     <button id="submitForm">What's open?</button>
 </div>
 <div class="clock">
-<h3 class="clock-flavor">What's open at:</h3>
-    <h2 id="clockText">12:00 a.m.</h2>
+<h3 class="clock-flavor">What's open at:</h2>
+    <h3 id="clockText">12:00 a.m.</h3>
 </div>
 <p class="click-instructions" style="font-weight: 300;">Click on a restaurant name to see more details:</p>
 <ol id="restaurant-list">

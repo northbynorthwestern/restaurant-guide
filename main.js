@@ -70,26 +70,13 @@ let setMap = (timeDecimal, selectDay) => {
             let marker = L.marker([restaurant.XCoord, restaurant.YCoord]).addTo(layerGroup);
             marker.bindPopup(`<h3>${restaurant.name}</h3><p>${restaurant.address}</p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`)
             let newListItem = document.createElement("li");
+            newListItem.tabIndex = 0;
             newListItem.innerHTML = `<div class = "restaurant-button"><h3 class=""restaurant-name">${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
             // Scroll to marker when hovering over restaurant name on list
             newListItem.onclick = function(){
-                if(restaurantSelected){
-                    document.querySelector(".selected-restaurant").classList.toggle("selected-restaurant")
-                }
-   
-                newListItem.classList.toggle("selected-restaurant")
                 mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 17)
                 marker.openPopup();
-                restaurantSelected = true;
             }
-            // Reset zoom on mouse exit
-            // newListItem.onmouseleave = function(){
-            //     mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16, {
-            //         animate: true,
-            //         duration: 1.5
-            //     })
-            //     marker.closePopup();
-            // }
             document.getElementById("restaurant-list").append(newListItem)
         }
     }
@@ -142,6 +129,12 @@ let getInputTime = () => {
  
 }
 document.getElementById("submitForm").addEventListener("click", function(){getInputTime()})
-
+document.onkeydown = function (e) {
+    e = e || window.event;
+    switch (e.which || e.keyCode) {
+          case 13 : document.getElementById("submitForm").click();
+              break;
+    }
+  }
 document.getElementById("clockText").innerHTML = dateToString(hour, minute, day)
 
