@@ -63,7 +63,8 @@ let setMap = (timeDecimal, selectDay) => {
 
     for(let restaurant of restaurantList){
         let timeRange = restaurant.availability[selectDay];
-        if((timeDecimal >= timeRange[0] && timeDecimal <= timeRange[1] || (timeRange >= 24 && timeDecimal <= (timeRange - 24))) && timeRange[0] != timeRange[1]){
+        if(((timeDecimal >= timeRange[0] && timeDecimal <= timeRange[1]) || (timeRange[1] >= 24 && timeDecimal <= (timeRange[1] - 24))) && (timeRange[0] != timeRange[1])){
+
             // adds marker if selected time falls between a restaurant's open and close times
             let marker = L.marker([restaurant.XCoord, restaurant.YCoord]).addTo(layerGroup);
             marker.bindPopup(`<h3>${restaurant.name}</h3><p>${restaurant.address}</p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`)
