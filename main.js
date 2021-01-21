@@ -56,7 +56,7 @@ let dateToString = (inputHour, inputMinute, inputWeekday) => {
 }
 
 let setMap = (timeDecimal, selectDay) => {
-    restaurantSelected = false;
+
     // Reset map and list on page
     layerGroup.clearLayers();
     document.getElementById("restaurant-list").innerHTML = ""
@@ -95,6 +95,7 @@ let setMap = (timeDecimal, selectDay) => {
     }
 }
 let getInputTime = () => {
+    restaurantSelected = false;
     // Reset error alert and hide intro text on mobile
     d3.select("#error-alert").classed("hidden", true);
     d3.select("#article-dek-mobile").classed("hidden", true);
