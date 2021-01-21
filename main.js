@@ -1,6 +1,6 @@
 
 // Create map and set coordinates to Evanston
-var mymap = L.map('map-one', {minZoom: 14, attributionControl: false}).setView([42.045597, -87.688568], 16);
+var mymap = L.map('map-one', {minZoom: 14, attributionControl: true}).setView([42.045597, -87.688568], 14);
 // Import tileset
 L.tileLayer('https://api.mapbox.com/styles/v1/dmdeloso/ckk0gkv9q1hoe17qrngmljsau/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZG1kZWxvc28iLCJhIjoiY2trMGZ6aXJhMDVqdDJvbnI4YzM5MHRraiJ9.nOwnc18LqvUNErSlg4N0AA').addTo(mymap);
 // Initialize layer for markers
@@ -10,13 +10,15 @@ let restaurantList;
 let rowConverter = function(d){
     return{
         name: d.RestaurantName,
+        address: d.Address,
+        website: d.WebsiteLink,
         XCoord: parseFloat(d.XCoord),
         YCoord: parseFloat(d.YCoord),
         availability: [[parseFloat(d.SundayOpen), parseFloat(d.SundayClose)], [parseFloat(d.MondayOpen), parseFloat(d.MondayClose)], [parseFloat(d.TuesdayOpen), parseFloat(d.TuesdayClose)], [parseFloat(d.WednesdayOpen), parseFloat(d.WednesdayClose)], [parseFloat(d.ThursdayOpen), parseFloat(d.ThursdayClose)], [parseFloat(d.FridayOpen), parseFloat(d.FridayClose)], [parseFloat(d.SaturdayOpen), parseFloat(d.SaturdayClose)]]
     }
 }
 // Import csv and map data to restaurant list
-d3.csv("https://gist.githubusercontent.com/dmdeloso/459e3cfd7e6fbab92194f967417410bb/raw/819d67e02ef3215c1b53984a5c260a11010cc9e3/RestaurantTimes.csv", rowConverter).then(function(data){
+d3.csv("https://northbynorthwestern.github.io/restaurant-guide/RestaurantTimes.csv", rowConverter).then(function(data){
     restaurantList = data;
     console.log(hour)
     setMap(parseFloat(hour.toString() + "." + minute.toString()), day)
@@ -64,13 +66,14 @@ let setMap = (timeDecimal, selectDay) => {
         if(timeDecimal >= timeRange[0] && timeDecimal <= timeRange[1]){
             // adds marker if selected time falls between a restaurant's open and close times
             let marker = L.marker([restaurant.XCoord, restaurant.YCoord]).addTo(layerGroup);
-            marker.bindPopup(restaurant.name)
+            marker.bindPopup(`<h3>${restaurant.name}</h3><p>${restaurant.address}</p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`)
             let newListItem = document.createElement("li");
-            newListItem.innerHTML = restaurant.name;
+            newListItem.innerHTML = `<div class = "restaurant-button"><h3 >${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
             // Scroll to marker when hovering over restaurant name on list
             newListItem.onmouseover = function(){
                 console.log(restaurant.name)
                 mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 17)
+                marker.openPopup();
             }
             // Reset zoom on mouse exit
             newListItem.onmouseleave = function(){
@@ -78,6 +81,7 @@ let setMap = (timeDecimal, selectDay) => {
                     animate: true,
                     duration: 1.5
                 })
+                marker.closePopup();
             }
             document.getElementById("restaurant-list").append(newListItem)
         }

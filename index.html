@@ -11,9 +11,34 @@
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.3.1/d3.min.js" integrity="sha512-9H86d5lhAwgf2/u29K4N5G6pZThNOojI8kMT4nT4NHvVR02cM85M06KJRQXkI0XgQWBpzQyIyr8LVomyu1AQdw==" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+        }
+        /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
         .top-content{
-            width: 20vw;
+            width: 30vw;
             position: absolute;
             border-right: 2px solid navy;
             left: 0;
@@ -23,6 +48,7 @@
             padding: 2em;
             /* border-radius: 10px; */
             /* box-shadow: 1px 2px 2px black; */
+            overflow-y: scroll;
             z-index: 10;
         }
         #map-one{
@@ -40,11 +66,10 @@
             box-shadow: 1px 1px 1px black;
         }
         .article-hed{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-top: 0;
             text-align: center;
         }
         .article-dek, .article-disclaimer, #article-disclaimer-mobile, #article-dek-mobile{
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .article-disclaimer, #article-disclaimer-mobile{
             font-style: italic;
@@ -63,18 +88,22 @@
             background-color: lightgreen;
             box-shadow: 1px 1px 2px;
             border-radius: 10px;
-            width: 90%;
+            max-width: 50%;
             padding: 1em;
             margin: auto;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             text-align: center;
            
         }
         select, input{
-            border: 1px solid black;
-            border-radius: 5px;
+            padding: .5em;
             /* box-shadow: 1px 2px 3px; */
-            height: 4em;
+            /* height: 4em; */
+            border: 1px solid green;
+            border-radius: 4px;
+         box-sizing: border-box;
+        }
+        #weekday-input{
+            margin-bottom: 1em;
         }
         .clock{
             width: 100%;
@@ -82,12 +111,11 @@
         }
         .clock-flavor{
             margin-bottom: 0;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
             font-weight: 400;
         }
         #clockText{
             margin-top: 0;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         #period, #minuteInput{
             margin-right: .5em;
@@ -119,21 +147,21 @@
         display: none !important;
     }
     #restaurant-list{
+        
         list-style: none;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         padding-inline-start: 0;
-        overflow-y: scroll;
-        height: 50%;
+        /* overflow-y: scroll; */
+        /* max-height: 35%; */
     }
     #restaurant-list li{
-        padding: 1em 0;
+        padding: 0;
         border-bottom: 1px solid darkgrey;
         user-select: none;
         transition: color .2s linear;
-        cursor: pointer;
+        /* cursor: pointer; */
     }
     #restaurant-list li:hover{
-        color: blue;
+        /* color: blue; */
     }
     .article-hed-mobile{
         display: none;
@@ -145,6 +173,30 @@
     }
     label{
         font-size: .75em;
+    }
+    .restaurant-button{
+        font-size: 1em;
+        text-align: center;
+    }
+    .restaurant-details{
+        display: none;
+        text-align: center;
+    }
+    #restaurant-list li:hover .restaurant-details{
+        display: block ;
+        /* color: red */
+    }
+    .leaflet-popup-content h3, .leaflet-popup-content p{
+        margin: .5em 0;
+    }
+    .article-credits{
+        font-size: 1em;
+        font-weight: 300;
+        font-style: italic;
+    }
+    .article-credits a{
+        font-weight: 400;
+        color: black;
     }
     @media screen and (max-width: 1024px){
     .article-dek, .article-disclaimer{
@@ -184,7 +236,6 @@ height: 40%;
         height: 5%;
         padding-bottom: 5%;
         z-index: 10;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         font-size: 7vw;
     }
     .input-container{
@@ -235,7 +286,9 @@ height: 40%;
             <option value="PM">p.m.</option>
         </select>
     </div>
-    <div class="input-plus-label">
+
+    </form>
+    <div class="input-plus-label" id="weekday-input">
         <label for="weekday">Day</label>
         <select name="weekday" id="weekday">
             <option value="0">Sunday</option>
@@ -247,7 +300,6 @@ height: 40%;
             <option value="6">Saturday</option>
         </select>
     </div>
-    </form>
     <button id="submitForm">What's open?</button>
 </div>
 <div class="clock">
@@ -256,7 +308,9 @@ height: 40%;
 </div>
 <ol id="restaurant-list">
 </ol>
+<footer class="article-credits"><p>Designed and developed by <a href="https://northbynorthwestern.com/author/david/" target="_blank">David Deloso</a> for <a href="https://northbynorthwestern.github.io/" target="_blank">NBN Interactive.</a></p> <p>Concept and additional data collection by <a href="https://northbynorthwestern.com/author/joseph/" target="_blank">Joseph Ramos</a></p> <p>Notice an incorrect schedule or missing Evanston restaurant? <a href="mailto:daviddeloso2022@u.northwestern.edu" target="_blank">Let David know.</a></p></footer>
 </section>
+<p class="credits-hover">Show credits</p>
 
 </body>
 <script src="main.js"></script>
