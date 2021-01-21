@@ -164,12 +164,15 @@
         padding: 0;
         border-bottom: 1px solid darkgrey;
         user-select: none;
-        transition: color .2s linear;
+
         cursor: pointer;
 
     }
+    .restaurant-button{
+        transition: color .15s linear;
+    }
     #restaurant-list li:hover .restaurant-button{
-        color: navy;
+        color: rgb(10, 152, 199);
     }
     .article-hed-mobile{
         display: none;
@@ -192,10 +195,17 @@
     }
     #restaurant-list li:focus{
         outline: none;
+        cursor: default;
     }
-    #restaurant-list li:focus .restaurant-details{
+    #restaurant-list li:focus .restaurant-button{
+        color: black;
+    }
+    #restaurant-list li:focus .restaurant-details, #restaurant-list li:focus-within .restaurant-details{
         display: block ;
         /* color: red */
+    }
+    .restaurant-website{
+        padding-bottom: 1em;
     }
     .leaflet-popup-content h3, .leaflet-popup-content p{
         margin: .5em 0;
@@ -228,9 +238,6 @@
         padding: 0 1em;
         /* box-shadow: 0 -2px 2px black; */
     }     
-    .article-hed{
-        /* display: none; */
-    }
     #map-one{
         top: 0;
 bottom: 50%;
