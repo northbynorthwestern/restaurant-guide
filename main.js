@@ -130,8 +130,15 @@ let getInputTime = () => {
     }
     document.getElementById("clockText").innerHTML = dateToString(setHour, minuteInput, weekdayInput)
     // Converts time to float where the decimals represent the minutes - e.g. 11:30 p.m. == 23.3, 5:00 a.m. == 5
+    if(minuteInput < 10){
+        let finalTime = [parseFloat(setHour.toString() + ".0" + minuteInput.toString()), weekdayInput]
+        setMap(finalTime[0], finalTime[1])
+    }
+    else{
     let finalTime = [parseFloat(setHour.toString() + "." + minuteInput.toString()), weekdayInput]
     setMap(finalTime[0], finalTime[1])
+    }
+   
  
 }
 document.getElementById("submitForm").addEventListener("click", function(){getInputTime()})
