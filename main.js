@@ -1,6 +1,6 @@
 let restaurantSelected = false;
 // Create map and set coordinates to Evanston
-var mymap = L.map('map-one', {minZoom: 14, attributionControl: true}).setView([42.045597, -87.688568], 14);
+var mymap = L.map('map-one', {minZoom: 14, attributionControl: true}).setView([42.045597, -87.688568], 16);
 // Import tileset
 L.tileLayer('https://api.mapbox.com/styles/v1/dmdeloso/ckk0gkv9q1hoe17qrngmljsau/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZG1kZWxvc28iLCJhIjoiY2trMGZ6aXJhMDVqdDJvbnI4YzM5MHRraiJ9.nOwnc18LqvUNErSlg4N0AA').addTo(mymap);
 // Initialize layer for markers
