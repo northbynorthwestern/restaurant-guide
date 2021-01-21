@@ -1,4 +1,4 @@
-
+let restaurantSelected = false;
 // Create map and set coordinates to Evanston
 var mymap = L.map('map-one', {minZoom: 14, attributionControl: true}).setView([42.045597, -87.688568], 14);
 // Import tileset
@@ -68,21 +68,26 @@ let setMap = (timeDecimal, selectDay) => {
             let marker = L.marker([restaurant.XCoord, restaurant.YCoord]).addTo(layerGroup);
             marker.bindPopup(`<h3>${restaurant.name}</h3><p>${restaurant.address}</p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`)
             let newListItem = document.createElement("li");
-            newListItem.innerHTML = `<div class = "restaurant-button"><h3 >${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
+            newListItem.innerHTML = `<div class = "restaurant-button"><h3 class=""restaurant-name">${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
             // Scroll to marker when hovering over restaurant name on list
-            newListItem.onmouseover = function(){
-                console.log(restaurant.name)
+            newListItem.onclick = function(){
+                if(restaurantSelected){
+                    document.querySelector(".selected-restaurant").classList.toggle("selected-restaurant")
+                }
+   
+                newListItem.classList.toggle("selected-restaurant")
                 mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 17)
                 marker.openPopup();
+                restaurantSelected = true;
             }
             // Reset zoom on mouse exit
-            newListItem.onmouseleave = function(){
-                mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16, {
-                    animate: true,
-                    duration: 1.5
-                })
-                marker.closePopup();
-            }
+            // newListItem.onmouseleave = function(){
+            //     mymap.flyTo(L.latLng(restaurant.XCoord, restaurant.YCoord), 16, {
+            //         animate: true,
+            //         duration: 1.5
+            //     })
+            //     marker.closePopup();
+            // }
             document.getElementById("restaurant-list").append(newListItem)
         }
     }

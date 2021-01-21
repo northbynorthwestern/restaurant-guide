@@ -158,10 +158,11 @@
         border-bottom: 1px solid darkgrey;
         user-select: none;
         transition: color .2s linear;
-        /* cursor: pointer; */
+        cursor: pointer;
+
     }
-    #restaurant-list li:hover{
-        /* color: blue; */
+    #restaurant-list li:hover .restaurant-button{
+        color: navy;
     }
     .article-hed-mobile{
         display: none;
@@ -182,7 +183,7 @@
         display: none;
         text-align: center;
     }
-    #restaurant-list li:hover .restaurant-details{
+    .selected-restaurant .restaurant-details{
         display: block ;
         /* color: red */
     }
@@ -306,6 +307,7 @@ height: 40%;
 <h3 class="clock-flavor">What's open at:</h3>
     <h2 id="clockText">12:00 a.m.</h2>
 </div>
+<p class="click-instructions" style="font-weight: 300;">Click on a restaurant name to see more details:</p>
 <ol id="restaurant-list">
 </ol>
 <footer class="article-credits"><p>Designed and developed by <a href="https://northbynorthwestern.com/author/david/" target="_blank">David Deloso</a> for <a href="https://northbynorthwestern.github.io/" target="_blank">NBN Interactive.</a></p> <p>Concept and additional data collection by <a href="https://northbynorthwestern.com/author/joseph/" target="_blank">Joseph Ramos</a></p> <p>Notice an incorrect schedule or missing Evanston restaurant? <a href="mailto:daviddeloso2022@u.northwestern.edu" target="_blank">Let David know.</a></p></footer>
