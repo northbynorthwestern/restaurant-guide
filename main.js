@@ -72,6 +72,8 @@ let setMap = (timeDecimal, selectDay) => {
             newListItem.innerHTML = `<div class = "restaurant-button"><h3 class=""restaurant-name">${restaurant.name}</h3></div> <div class="restaurant-details"><p>${restaurant.address}</p><p><a href=${restaurant.website} target="_blank">Visit website</a></p></div>`;
             // Scroll to marker when hovering over restaurant name on list
             newListItem.onclick = function(){
+                console.log(timeRange[0])
+                console.log(timeRange[1])
                 if(restaurantSelected){
                     document.querySelector(".selected-restaurant").classList.toggle("selected-restaurant")
                 }
