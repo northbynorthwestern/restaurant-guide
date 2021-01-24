@@ -2,6 +2,7 @@ RestaurantName,Address,WebsiteLink,XCoord,YCoord,SundayOpen,SundayClose,MondayOp
 10Q Chicken,"816 Church St, Evanston, IL 60201",https://www.10qchicken.com/,42.04822,-87.68288,11,22,11,22,11,22,11,22,11,22,11,22,11,22
 527 Cafe,"527 Davis St, Evanston, IL 60201",https://www.527cafedavis.com/,42.04618,-87.67902,11,20,0,0,11,20,11,20,11,20,11,20,11,20
 Aloha Poke Co.,"630 Davis St, Evanston, IL 60201",https://www.alohapokeco.com/menu/,42.04637,-87.68136,10,22,10,22,10,22,10,22,10,22,10,22,10,22
+Bagel Art,"615 Dempster St, Evanston, IL 60201",http://www.bagelartevanston.com/,42.04137,-87.68127,0,0,7,14,7,14,7,14,7,14,7,14,7,14
 Bangers & Lace,"810 Grove St, Evanston, IL 60201",http://www.bangersandlaceevanston.com/,42.04524,-87.68231,16,21,16,22,16,22,16,22,16,22,12,23,12,23
 Bat 17,"1709 Benson Ave, Evanston, IL 60201",https://www.bat17evanston.com/,42.04886,-87.68312,10,22,11,22,11,22,11,22,11,22,11,23,10,23
 Bennison's Bakery,"1000 Davis St, Evanston, IL 60201",https://www.bennisonscakes.com/,42.04671,-87.68508,7,16,7,18,7,18,7,18,7,18,7,18,7,17
@@ -17,6 +18,7 @@ Coffee Lab,"910 Noyes St, Evanston, IL 60201",https://www.coffeelabevanston.com/
 Cozy Noodles and Rice,"1018 Davis St, Evanston, IL 60201",http://www.cozychicago.com/home/index.asp,42.04687,-87.68601,16,21.3,11.3,21.3,11.3,21.3,11.3,21.3,11.3,21.3,11.3,22,11.3,22
 Cross-Rhodes,"913 Chicago Ave, Evanston, IL 60202",https://crossrhodesevanston.com/,42.03442,-87.67882,16,20,16,20,16,20,16,20,16,20,11.3,21,11.3,21
 Cupitol Coffee & Eatery,"812 Grove St, Evanston, IL 60201",https://cupitol.com/,42.0455,-87.68249,7,16,7,16,7,16,7,16,7,16,7,16,7,16
+D&D Finer Foods,"825 Noyes St, Evanston, IL 60201",https://ddfinerfoods.com/,42.05881,-87.6831,9,17,8,20,8,20,8,20,8,20,8,20,8,20
 Domino's Pizza,"911 Foster St, Evanston, IL 60201",https://pizza.dominos.com/illinois/evanston/,42.05404,-87.68393,10.3,24.3,10.3,24.3,10.3,24.3,10.3,24.3,10.3,24.3,10.3,25.3,10.3,25.3
 Edzo's Burger Shop,"1571 Sherman Ave, Evanston, IL 60201",https://edzos.com/,42.04598,-87.68107,10.3,16,0,0,10.3,21,10.3,21,10.3,21,10.3,21,10.3,21
 Einstein Bros. Bagels,"1745 Sherman Ave, Evanston, Illinois 60201",https://locations.einsteinbros.com/us/il/evanston/1745-sherman-ave,42.04982,-87.68155,6,14,6,14,6,14,6,14,6,14,6,14,6,14
@@ -56,21 +58,26 @@ Peppercorns Kitchen,"620 Davis St #4419, Evanston, IL 60201",https://peppercorns
 Pono Ono,"1630 Chicago Ave, Evanston, IL 60201",https://ponoonopoke.com/,42.04724,-87.67972,11,21,11,21,11,21,11,21,11,21,11,21,11,21
 Potbelly Sandwich Shop,"630 Davis St, Evanston, IL 60201",https://www.potbelly.com/stores/23047,42.046371,-87.681358,10,22,10,22,10,22,10,22,10,22,10,22,10,22
 Prairie Joe's,"1921 Central St, Evanston, IL 60201",http://prairiejoes.com/,42.06453,-87.69966,8.3,13.3,9,14,9,14,9,14,9,14,9,14,7,14
+Sarpino's Pizzeria,"2428 Main St, Evanston, IL 60202",https://www.gosarpinos.com/pizza-delivery/sarpino-s-pizzeria-in-evanston-skokie-chicago#!/Info/4,42.03371,-87.708099,10,28,10,28,10,28,10,28,10,28,10,28,10,28
 Sea Ranch Sushi,"518 Dempster St, Evanston, IL 60202",https://searanchsushi.com/,42.04103,-87.68005,12,19.3,12,19.3,12,19.3,12,19.3,12,19.3,12,20.3,12,20.3
 Shang Noodle & Chinese,"608 Davis St #4419, Evanston, IL 60201",https://www.shangnoodleandchinese.com/,42.04608,-87.68015,11,21,11,21,11,21,11,21,11,21,11,22,11,22
 Siam Splendour,"1125 Emerson St, Evanston, IL 60201",https://www.siamsplendourevanston.com/,42.05264,-87.68716,12,21,11,21,11,21,11,21,11,21,11,21,12,21
 Stacked & Folded,"824 Noyes St, Evanston, IL 60201",https://www.stackedandfolded.com/,42.05795,-87.68312,11,20,0,0,11,20,11,20,11,20,11,20,11,20
 Starbucks (Norris University Center),"1999 Campus Dr, Evanston, IL 60208",https://www.northwestern.edu/norris/about-us/hours/index.html,42.05353,-87.67268,10,22,8.3,22,8.3,22,8.3,22,8.3,22,8.3,22,8.3,22
 Starbucks (Sherman Ave.),"1734 Sherman Ave, Evanston, IL 60201",https://www.starbucks.com/store-locator/store/116523/sherman-clark-evanston-1734-sherman-avenue-evanston-il-602013713-us,42.04958,-87.68202,6,21,6,22,6,22,6,22,6,22,6,22,6,22
-Subway,"3330 Central Street, Space A-1, Evanston, IL 60201",https://restaurants.subway.com/united-states/il/evanston/3330-central-street,42.06427,-87.72699,0,0,9,20,9,20,9,20,9,20,9,20,9,20
-Subway,"724 N Clark St Space No 724, Evanston, IL 60201",https://restaurants.subway.com/united-states/il/evanston/724-clark-street,42.04976,-87.68134,9,3,9,3,9,3,9,3,9,3,9,3,9,3
+Steak 'n Shake,"2209 Oakton St, Evanston, IL 60202",https://www.steaknshake.com/locations/il-evanston-oakton-street/,42.02677,-87.70682,10,24,10,24,10,24,10,24,10,24,10,24,10,24
+Subway (Central St.) ,"3330 Central Street, Space A-1, Evanston, IL 60201",https://restaurants.subway.com/united-states/il/evanston/3330-central-street,42.06427,-87.72699,0,0,9,20,9,20,9,20,9,20,9,20,9,20
+Subway (Clark St.),"724 N Clark St Space No 724, Evanston, IL 60201",https://restaurants.subway.com/united-states/il/evanston/724-clark-street,42.04976,-87.68134,9,27,9,27,9,27,9,27,9,27,9,27,9,27
+Subway (Emerson St.),"1133 Emerson St, Evanston, IL 60201",https://restaurants.subway.com/united-states/il/evanston/1133-emerson-street,42.05267,-87.68744,9,22,7,22,7,22,7,22,7,23,7,23,8,23
 Table to Stix Ramen,"1007 Davis St, Evanston, IL 60201",http://www.tabletostix.com/,42.04723,-87.68539,12,21,12,20,0,0,12,20,12,20,12,21,12,21
 Taco Diablo,"1026 Davis St., Evanston, IL, 60201 ",https://www.tacodiablo.com/,42.04669,-87.68615,11.3,21,11:30,22,11:30,22,11:30,22,11:30,22,11:30,22,11:30,22
 Tapas Barcelona,"1615 Chicago Ave, Evanston, IL 60201",https://www.opentable.com/r/tapas-barcelona-evanston,42.04679,-87.67915,16,21,17,21,17,21,17,21,17,21,17,22,16,22
 Tealicious Bubble,"1565 Sherman Ave, Evanston, IL 60201",https://www.tealiciousbubble.com/,42.04586,-87.681137,0,0,12,19,12,19,12,19,12,19,12,19,12,19
 Terra & Vine,"1701 Maple Ave, Evanston, IL 60201",https://www.terraandvine.com/,42.04883,-87.68448,16,20,0,0,0,0,16,20,16,20,16,20,16,20
+The Supreme Burrito #1,"843 Dodge Ave, Evanston, IL 60202",https://www.facebook.com/TheSupremeBurrito/,42.03355,-87.69886,10,15,10,22.3,10,22.3,10,22.3,10,22.3,10,22.3,10,22.3
 Todoroki,"526 Davis St, Evanston, IL 60201",http://www.mytodorokievanston.com/,42.04582,-87.67916,15,21,15,21,15,21,15,21,15,21,15,21,15,21
 Tomate Fresh Kitchen,"914 Noyes St, Evanston, IL 60201",https://www.tomatefreshkitchen.com/,42.058311,-87.683792,0,0,11,18,11,18,11,18,11,18,11,18,11,18
 Union Squared,"1307 Chicago Avenue, Evanston, IL 60201",http://unionpizza.com/,42.04147,-87.68038,16,20,16,20,16,20,16,20,16,20,16,20,16,20
 Viet Nom Nom (Church St.),"618 1/2 Church St, Evanston, IL 60201",https://www.eatvietnomnom.com/,42.04789,-87.68019,0,0,0,0,11,15,11,15,11,20,11,20,11,20
 Viet Nom Nom (Norris),"1999 Campus Dr, Evanston, IL 60208",https://www.eatvietnomnom.com/,42.05353,-87.67268,0,0,11,15,11,15,11,15,11,15,11,15,0,0
+Wingstop,"2434 Main St f, Evanston, IL 60202",https://www.wingstop.com/location/wingstop-376-evanston-il-60202/menu,42.033,-87.70699,11,24,11,24,11,24,11,24,11,24,11,24,11,24
